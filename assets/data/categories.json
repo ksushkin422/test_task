@@ -1,0 +1,19 @@
+[
+	{
+		"id": 1,
+		"category_name": "Напитки",
+		"image": "https://e7.pngegg.com/pngimages/508/192/png-clipart-lemonade-computer-icons-fizzy-drinks-food-lemonade-food-text.png"
+	},
+	{
+		"id": 2,
+		"category_name": "Овощи",
+		"image": "https://e1.pngegg.com/pngimages/974/114/png-clipart-tomate-legume-cuisine-vegetarienne-aliments-salade-fruits-depanneur-vegetalisme.png"
+	},
+	{
+		"id": 3,
+		"category_name": "Посуда",
+		"image": "https://www.pinclipart.com/picdir/big/129-1296200_cooking-pan-and-cutlery-set-svg-png-icon.png"
+	}
+
+
+]

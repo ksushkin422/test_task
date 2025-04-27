@@ -1,0 +1,194 @@
+[
+	{
+		"id": 1,
+		"image": [
+			"https://cdn.culture.ru/images/cc866079-2e59-5f97-a3d4-8f330325fd0d",
+			"https://avatars.mds.yandex.net/i?id=23f1ed95f727dfc64bb3136f895b4140_l-4121027-images-thumbs&n=13",
+			"https://i.ytimg.com/vi/5sMNR6bH8dc/maxresdefault.jpg",
+			"https://i.pinimg.com/736x/69/f2/17/69f217aff73d2dd6074188a6418d804c.jpg",
+			"https://prostayaferma.ru/wp-content/uploads/6/c/a/6cafc0f116bd5aab4a43d1a55adae62b.jpeg"
+			],
+		"name": "Картофель",
+		"category_id": 2,
+		"description": "Корнеплоды продолговатые, с желтой кожурой и светло-желтой мякотью, плотные, ровные",
+		"composition": "Оторный мытый молодой картофель",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "1 кг",
+				"price": 150
+			},
+			{
+				"id": 2,
+				"size": "5 кг",
+				"price": 750
+			},
+			{
+				"id": 3,
+				"size": "10 кг",
+				"price": 1500
+			}
+		]
+	},
+	{
+		"id": 4,
+		"image": [
+			"https://psdcollection.ru/wp-content/uploads/2020/05/MockUp_52.jpg",
+			"https://eda.yandex/images/3735503/859300fa135745208e5bfb1bb99186fc-280x220.jpeg",
+			"https://ir.ozone.ru/s3/multimedia-t/6353947061.jpg",
+			"https://avatars.mds.yandex.net/i?id=63da1a066ea137bab883a70478a3d16a_l-4942568-images-thumbs&n=13",
+			"https://media.istockphoto.com/id/1307421122/ru/%D1%84%D0%BE%D1%82%D0%BE/%D0%B7%D0%B0%D0%BB%D0%B8%D0%B2%D0%BA%D0%B0-%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B3%D0%BE-%D1%87%D0%B0%D1%8F-%D0%B2-%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B5-%D1%87%D0%B0%D1%88%D0%BA%D0%B8-%D0%B8%D0%B7%D0%BE%D0%BB%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D1%8B.jpg?s=612x612&w=0&k=20&c=66TOqnCJVahTHBh9wwnpEs_3Uh9FQG6SdEQx_ejC0co="
+			],
+		"name": "Чай",
+		"category_id": 1,
+		"description": "Пастеризованный напиток с экстрактом зеленого чая приготовлен на растительном сырье.",
+		"composition": "Вода, сахар, фруктоза, экстракт зеленого чая, антиокислитель аскорбиновая кислота",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "1 шт",
+				"price": 175
+			}
+		]
+	},
+	{
+		"id": 5,
+		"image": [
+			"https://p2.zoon.ru/preview/0p5WPw88BzEd4rfJvDejDQ/2400x1500x85/1/9/6/original_58e2d5f940c08895708dc732_6260f25a6d58c4.45619386.jpg",
+			"https://vtandir.ru/images/stories/virtuemart/product/6697BEBB-1BC1-41CA-BDB4-C66D7A949380.jpeg",
+			"https://avatars.mds.yandex.net/i?id=b378ab715ee96209f97dc6478fc2355e_l-5142631-images-thumbs&n=13",
+			"https://i.ytimg.com/vi/Q52pME4ipOs/maxresdefault.jpg",
+			"https://berezka-market.ru/wa-data/public/shop/products/09/17/1709/images/1577/1577.970.jpeg"
+			],
+		"name": "Компот",
+		"category_id": 1,
+		"description": "Компот из вишни делается из свежих ягод, не содержит ГМО и красителей",
+		"composition": "Вишня, питьевая вода, сахар, лимонная кислота",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "1 шт",
+				"price": 83
+			}
+		]
+	},
+	{
+		"id": 2,
+		"image": [
+			"https://agrohoz.by/upload/resize_cache/iblock/401/490_490_1/401204388fc9c55312a5b96d4b6c6e1e.jpg",
+			"https://sun6-22.userapi.com/impg/EogKeDyDWOV34iOVC-Q-1K9IkPvpWyqg9y7Tcg/oT04jLrW0-4.jpg?size=604x604&quality=95&sign=0d83043f4de00ca34bfdf46cec04cefe&c_uniq_tag=pkWZsNz_3QV2_HkLFWNm_x3Yi0waYaarjtFvIByEYeA&type=album",
+			"https://i.ytimg.com/vi/Pau2hQpqQ64/maxresdefault.jpg",
+			"https://avatars.mds.yandex.net/i?id=ca4e13ba2395bf207766715151fd667a_l-5097070-images-thumbs&n=13",
+			"https://avatars.mds.yandex.net/get-shedevrum/11270697/a9d6e134dfa811eea619060dd3df48cf/orig"
+			],
+		"name": "Огурцы",
+		"category_id": 2,
+		"description": "Плоды вытянутой цилиндрической формы, имеют кожуру ярко-зеленого и темно-зеленого цвета и сочную мякоть белого или слегка зеленоватого оттенка",
+		"composition": "Свежие огурцы",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "1 кг",
+				"price": 50
+			},
+			{
+				"id": 2,
+				"size": "3 кг",
+				"price": 150
+			},
+			{
+				"id": 3,
+				"size": "5 кг",
+				"price": 250
+			}
+		]
+	},
+	{
+		"id": 6,
+		"image": [
+			"https://cdn1.ozone.ru/s3/multimedia-k/6147418004.jpg",
+			"https://cdn.metro-cc.ru/ru/ru_pim_306230001001_04.png",
+			"https://goods-photos.static1-sima-land.com/items/593850/1/1600.jpg?v=1530270080",
+			"https://cs2.livemaster.ru/storage/33/f2/73830422a968fd412f983b4283sn--posuda-kruzhka-keramicheskaya-biryuzovaya-s-otpechatkami-letn.jpg",
+			"https://main-cdn.sbermegamarket.ru/big2/hlr-system/645/001/084/314/48/600016962802b7.jpg"
+			],
+		"name": "Кружка",
+		"category_id": 3,
+		"description": "Кружка фарфоровая для чая и кофе",
+		"composition": "Фарфор",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "200 мл",
+				"price": 270
+			},
+			{
+				"id": 2,
+				"size": "450 мл",
+				"price": 550
+			}
+			
+		]
+	},
+	{
+		"id": 7,
+		"image": [
+			"https://4gusti.ru/wa-data/public/shop/products/72/52/595272/images/323458/8lhwzecp5q926hjoba2bj0qjqmrki6nm.jpeg.jpg.970.jpg",
+			"https://restorator.by/images/objects/2180_2019.png",
+			"https://mto-online.ru/userfls/shop/large/9/81914_tarelka-melkaya-samsquito-165-m.jpg",
+			"https://avatars.mds.yandex.net/get-mpic/3584542/img_id3998896057079142317.jpeg/orig",
+			"https://farforopt.ru/images/cms/thumbs/426b6c9e04959aa2cbab55be1e24977d9dcc7249/tarelka_glubokaya_1000_auto_jpg.jpg"
+			],
+		"name": "Тарелка",
+		"category_id": 3,
+		"description": "Тарелка обеденная плоская с бортиками керамическая",
+		"composition": "Керамика, фарфор",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "5 шт",
+				"price": 650
+			},
+			{
+				"id": 2,
+				"size": "10 шт",
+				"price": 1300
+			}
+			
+		]
+	},
+	{
+		"id": 3,
+		"image": [
+			"https://cdn.ananasposter.ru/image/cache/catalog/poster/drugoe/79/30783-1000x830.jpg",
+			"https://t4.ftcdn.net/jpg/01/05/01/21/360_F_105012159_D72aPGKQN8bLVc7rbvU26evBxOBaz7L3.jpg",
+			"https://avatars.mds.yandex.net/i?id=1213c95b2da7b11d956159fbbf0875a2_l-4012839-images-thumbs&n=13",
+			"https://live.staticflickr.com/1683/24249091200_3c5c84e29f_b.jpg",
+			"https://agbz.ru/upload/iblock/2cf/teplitsy_rossii_tseny_na_tomaty_ne_vyrastut_iz_za_zapreta_na_vvoz_ovoshchey_i_fruktov_iz_armenii_i_a.jpg"
+			],
+		"name": "Помидоры",
+		"category_id": 2,
+		"description": "Плоды с заметной хрустящей текстурой, сочной мякотью и высокой устойчивостью к растрескиванию.",
+		"composition": "Свежие помидоры",
+		"packaging": [
+			{
+				"id": 1,
+				"size": "1 кг",
+				"price": 100
+			},
+			{
+				"id": 2,
+				"size": "3 кг",
+				"price": 300
+			},
+			{
+				"id": 3,
+				"size": "5 кг",
+				"price": 500
+			}
+			
+		]
+	}
+	
+	
+]
