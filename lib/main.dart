@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,11 +10,15 @@ import 'package:test_task/routes/app_pages.dart';
 import 'package:test_task/utils/base_screens/error_screen.dart';
 import 'package:test_task/utils/hex_color.dart';
 import 'app_binding.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   StaticMap.initialize(apiKey: 'pk_287d4ff2cbe047d794c97a33fe7f5c86');
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
   ErrorWidget.builder = (FlutterErrorDetails details) {
     return (kDebugMode)
         ? SafeArea(
