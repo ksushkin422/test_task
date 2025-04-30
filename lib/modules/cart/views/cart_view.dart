@@ -65,7 +65,7 @@ class CartView extends GetView<CartController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: 400,
+                      height: 450,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -217,7 +217,7 @@ class CartView extends GetView<CartController> {
                               width: 20,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: NetworkImage('${item['category']['image']}'),
+                                    image: NetworkImage('${item['category'].image}'),
                                     fit: BoxFit.cover),
                               ),
                             ),
@@ -229,7 +229,7 @@ class CartView extends GetView<CartController> {
                             flex: 5,
                             child: Container(
                               child: Text(
-                                '${item['category']['category_name']}',
+                                '${item['category'].category_name}',
                                 style: TextStyle(
                                     fontFamily: 'Manrope',
                                     color: Colors.grey,
