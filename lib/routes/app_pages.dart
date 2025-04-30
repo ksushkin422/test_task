@@ -9,8 +9,6 @@ import '../modules/catalog/bindings/catalog_binding.dart';
 import '../modules/catalog/views/catalog_view.dart';
 import '../modules/catalog/views/detail_view.dart';
 import '../modules/catalog/views/filter_view.dart';
-import '../modules/profile/bindings/profile_binding.dart';
-import '../modules/profile/views/profile_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_second_view.dart';
 import '../modules/splash/views/splash_view.dart';
@@ -25,15 +23,6 @@ class AppPages {
   static const WELCOME = Routes.WELCOME;
 
   static final routes = [
-
-    GetPage(
-      name: _Paths.PROFILE,
-      page: () => ProfileView(),
-      binding: ProfileBinding(),
-        children: [
-          GetPage(name: Routes.PROFILE, page:  () =>  ProfileView()),
-        ]
-    ),
 
     GetPage(
       name: _Paths.CART,
@@ -119,10 +108,6 @@ class AppPages {
         GetPage(name: Routes.DETAIL, page:  () =>  DetailView())
       ]
     ),
-
-
-
-
 
   ];
 }
