@@ -108,16 +108,16 @@ class FilterView extends GetView<FilterController> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                               image: NetworkImage(
-                                '${categ_item['image']}',
+                                '${categ_item.image}',
                               ),
                               fit: BoxFit.fitHeight),
                         ),
                       ),
                       onTap: (){
-                        controller.changeFilter(context, categ_item['id']);
+                        controller.changeFilter(context, categ_item.id);
                       },
-                      trailing: (GetStorage().read('filter')==categ_item['id'])?FaIcon(FontAwesomeIcons.check):null,
-                      title: Text('${categ_item['category_name']}', style: TextStyle(fontFamily: 'Manrope',
+                      trailing: (GetStorage().read('filter')==categ_item.id)?FaIcon(FontAwesomeIcons.check):null,
+                      title: Text('${categ_item.category_name}', style: TextStyle(fontFamily: 'Manrope',
                           color: hexToColor('#343235'),fontWeight: FontWeight.w300, fontSize: 18),),
                     ),
                   ))
