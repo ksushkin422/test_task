@@ -12,6 +12,7 @@ class CatalogController extends GetxController {
   var isLoadingCategories = true.obs;
   var isLoadingProducts = true.obs;
   var categories = Rxn<CategoriesMainResponse>();
+  List<CategoriesResponse> categs = [];
   var products = Rxn<ProductsMainResponse>();
   var products_for_filter = Rxn<ProductsMainResponse>();
   List<ProductsResponse> prods = [];
@@ -37,6 +38,9 @@ class CatalogController extends GetxController {
   Future<void> getCategoriesData() async {
     isLoadingCategories.value = true;
     categories.value = await FirebaseRepository().getCategoriesData();
+    categs = categories.value!.data!;
+    GetStorage().write('categories', categs);
+    print(GetStorage().read('categories'));
     isLoadingCategories.value = false;
   }
 
