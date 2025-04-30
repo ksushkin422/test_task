@@ -60,7 +60,7 @@ class DetailController extends GetxController {
         "count": 1,
         "name": product.value?.name,
         "image": product.value?.image?[0],
-        "category": GetStorage().read('categories').where((categ) => categ['id'] == product_item.category_id).toList()[0],
+        "category": GetStorage().read('categories').where((categ) => categ.id == product_item.category_id).toList()[0],
       }
     );
     GetStorage().writeInMemory('cart', cart);
