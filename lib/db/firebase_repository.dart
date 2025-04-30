@@ -23,4 +23,12 @@ class FirebaseRepository {
     return ProductsMainResponse.fromData(allData);
   }
 
+  Future<ProductsMainResponse> getProductsDataFiltered(val) async {
+    CollectionReference _collectionRef =
+    db.collection('products');
+    QuerySnapshot querySnapshot = await _collectionRef.where("category_id", isEqualTo: val).get();
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    return ProductsMainResponse.fromData(allData);
+  }
+  
 }
