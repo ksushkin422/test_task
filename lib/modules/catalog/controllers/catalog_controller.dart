@@ -18,7 +18,6 @@ class CatalogController extends GetxController {
   var cart = [].obs;
   var filter = 0.obs;
 
-
   @override
   void onInit() {
     super.onInit();
@@ -36,35 +35,38 @@ class CatalogController extends GetxController {
   }
 
   Future<void> getCategoriesData() async {
-   isLoadingCategories.value = true;
-   categories.value = await FirebaseRepository().getCategoriesData();
-   isLoadingCategories.value = false;
+    isLoadingCategories.value = true;
+    categories.value = await FirebaseRepository().getCategoriesData();
+    isLoadingCategories.value = false;
   }
 
   Future<void> getProductsData() async {
-   isLoadingProducts.value = true;
-   products.value = await FirebaseRepository().getProductsData();
-   products_for_filter.value = await FirebaseRepository().getProductsData();
-   prods = products.value?.data??[];
+    isLoadingProducts.value = true;
+    products.value = await FirebaseRepository().getProductsData();
+    products_for_filter.value = products.value;
+    prods = products.value?.data ?? [];
     isLoadingProducts.value = false;
   }
 
-
-
-  void goToFilter() {
-    Get.toNamed(Routes.FILTER)?.then((val) {
+  void goToFilter() async {
+    Get.toNamed(Routes.FILTER)?.then((val) async {
       filter.value = GetStorage().read('filter');
       filter.refresh();
-      if (filter.value!=0){
-        products_for_filter.value?.data = products.value?.data?.where((product_item)=>product_item.category_id==filter.value).toList();
+      if (filter.value != 0) {
+        products.value = await FirebaseRepository().getProductsDataFiltered(filter.value);
+        products_for_filter.value?.data = products.value?.data;
       } else {
+        products.value = await FirebaseRepository().getProductsData();
         products_for_filter.value?.data = products.value?.data;
       }
+      products_for_filter.refresh();
     });
   }
 
-  void goToCart(){
-    Get.toNamed(Routes.CART)?.then((val){cart.refresh();});
+  void goToCart() {
+    Get.toNamed(Routes.CART)?.then((val) {
+      cart.refresh();
+    });
   }
 
   void detailProduct(BuildContext context, product) {
