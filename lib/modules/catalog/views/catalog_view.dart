@@ -3,6 +3,7 @@ import 'package:flutter_breadcrumb/flutter_breadcrumb.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import '../../../db/response/products_response.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/base_screens/loading_data_widget.dart';
 import '../../../utils/hex_color.dart';
@@ -100,7 +101,7 @@ class CatalogView extends GetView<CatalogController> {
           items: <BreadCrumbItem>[
             BreadCrumbItem(
               content: Text(
-                '${controller.categories.where((cat_item)=>cat_item['id']==controller.filter.value).toList()[0]['category_name']}',
+                '${controller.categories.value?.data?.where((cat_item)=>cat_item.id==controller.filter.value).toList()[0].category_name}',
                 style: TextStyle(
                     fontFamily: 'Manrope',
                     color: hexToColor('#343235'),
@@ -122,7 +123,7 @@ class CatalogView extends GetView<CatalogController> {
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Text(
-        'Всего: ${controller.products.length}',
+        'Всего: ${controller.products.value?.data?.length}',
         textAlign: TextAlign.right,
         style: TextStyle(
             fontFamily: 'Manrope',
@@ -142,8 +143,7 @@ class CatalogView extends GetView<CatalogController> {
         crossAxisSpacing: 10,
         axisDirection: AxisDirection.down,
         children: [
-          ...controller.products_for_filter
-              .map(
+          ...?controller.products_for_filter.value?.data?.map(
                 (product) => productCard(context, product),
               )
               .toList()
@@ -152,7 +152,7 @@ class CatalogView extends GetView<CatalogController> {
     );
   }
 
-  Widget productCard(BuildContext context, product) {
+  Widget productCard(BuildContext context, ProductsResponse product) {
     return StaggeredGridTile.count(
       crossAxisCellCount: 1,
       mainAxisCellCount: 1.7,
@@ -173,21 +173,20 @@ class CatalogView extends GetView<CatalogController> {
             ],
           ),
           child: Column(
-            // mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 height: 150,
-                width: 150,
+                width: 160,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage('${product['image'][0]}'), fit: BoxFit.cover),
+                        image: NetworkImage('${product.image![0]}'), fit: BoxFit.cover,),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
               ),
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: Text(
-                  '${product['name']}'.toUpperCase(),
+                  '${product.name}'.toUpperCase(),
                   style: TextStyle(
                       fontFamily: 'Manrope',
                       color: hexToColor('#343235'),
@@ -196,7 +195,6 @@ class CatalogView extends GetView<CatalogController> {
                 ),
               ),
               Container(
-                // margin: EdgeInsets.only(top: 5),
                 child: ListTile(
                   leading: Container(
                     height: 20,
@@ -204,13 +202,13 @@ class CatalogView extends GetView<CatalogController> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                            '${controller.categories.value.where((categ) => categ['id'] == product['category_id']).toList()[0]['image']}',
+                            '${controller.categories.value?.data?.where((categ) => categ.id == product.category_id).toList()[0].image}',
                           ),
                           fit: BoxFit.fitHeight),
                     ),
                   ),
                   title: Text(
-                    '${controller.categories.value.where((categ) => categ['id'] == product['category_id']).toList()[0]['category_name']}',
+                    '${controller.categories.value?.data?.where((categ) => categ.id == product.category_id).toList()[0].category_name}',
                     style: TextStyle(
                         fontFamily: 'Manrope',
                         color: hexToColor('#343235'),
