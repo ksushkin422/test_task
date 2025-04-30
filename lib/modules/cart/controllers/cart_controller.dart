@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import '../../../routes/app_pages.dart';
 import '../../../utils/hex_color.dart';
 
@@ -15,7 +14,6 @@ class CartController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    cart.value = GetStorage().read('cart');
     calculateItogo();
   }
 
@@ -24,12 +22,12 @@ class CartController extends GetxController {
     super.onReady();
   }
 
-  void calculateItogo() {
+  void calculateItogo() async {
+    cart.value = await GetStorage().read('cart');
     cart.forEach((cart_item) {
       itogo_sum += cart_item['packaging_price'] * cart_item['count'];
-      print('itogo_sum');
-      print(itogo_sum);
     });
+    isLoadingEvent.value = false;
   }
 
   void deleteFromCart(BuildContext context, item) {
