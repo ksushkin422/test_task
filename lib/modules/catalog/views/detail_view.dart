@@ -179,7 +179,8 @@ class DetailView extends GetView<DetailController> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            '${GetStorage().read('categories').where(( categ) => categ['id'] == controller.product_item.category_id).toList()[0]['image']}'),
+                            // '${GetStorage().read('categories')}'),
+                            '${GetStorage().read('categories').where((categ) => categ.id == controller.product_item.category_id).toList()[0].image}'),
                         fit: BoxFit.cover),
                   ),
                 ),
@@ -192,7 +193,7 @@ class DetailView extends GetView<DetailController> {
                 child: Container(
                   child: Text(
                     // '',
-                    '${GetStorage().read('categories').where(( categ) => categ['id'] == controller.product_item.category_id).toList()[0]['category_name']}',
+                    '${GetStorage().read('categories').where(( categ) => categ.id == controller.product_item.category_id).toList()[0].category_name}',
                     style: TextStyle(
                         fontFamily: 'Manrope',
                         color: hexToColor('#343235'),
