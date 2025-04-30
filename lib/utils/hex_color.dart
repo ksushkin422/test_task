@@ -11,22 +11,3 @@ Color hexToColor(String hex) {
         (hex.length == 7 ? 0xff000000 : 0x00000000),
   );
 }
-
-getMarkColor(mark) {
-  Color mark_color = hexToColor('#8067F8');
-  switch (mark) {
-    case '2' || 2:
-      mark_color = Colors.red;
-      break;
-    case '3' || 3:
-      mark_color = Colors.orange;
-      break;
-    case '4' || 4:
-      mark_color = hexToColor('#638EEF');
-      break;
-    case '5' || 5:
-      mark_color = hexToColor('#7BC649');
-      break;
-  }
-  return mark_color;
-}
