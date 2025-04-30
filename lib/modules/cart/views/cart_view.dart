@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:test_task/utils/base_screens/loading_data_widget.dart';
 import '../../../utils/hex_color.dart';
 import '../controllers/cart_controller.dart';
 
@@ -57,35 +58,42 @@ class CartView extends GetView<CartController> {
             ),
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * .58,
-              child: SingleChildScrollView(
-                child: Column(
+        body: Obx(
+          () => (controller.isLoadingEvent.value)
+              ? loaderView()
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    (controller.cart.value.isNotEmpty)?orderList(context):Container(
-                      margin: EdgeInsets.only(top: 50),
-                      child: Text(
-                        'Корзина пуста',
-                        style: TextStyle(
-                            fontFamily: 'Manrope',
-                            color: hexToColor('#343235'),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18),
+                    Container(
+                      height: 400,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            (controller.cart.isNotEmpty)
+                                ? orderList(context)
+                                : Container(
+                                    margin: EdgeInsets.only(top: 50),
+                                    child: Text(
+                                      'Корзина пуста',
+                                      style: TextStyle(
+                                          fontFamily: 'Manrope',
+                                          color: hexToColor('#343235'),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18),
+                                    ),
+                                  ),
+                          ],
+                        ),
                       ),
                     ),
+                    Container(
+                      height: 150,
+                      alignment: Alignment.topLeft,
+                      child: (controller.cart.isNotEmpty) ? itogoWidget(context) : SizedBox(),
+                    ),
+                    Container(height: 100, child: orderButton(context)),
                   ],
                 ),
-              ),
-            ),
-            Container(
-                height: MediaQuery.of(context).size.height * .16,
-                alignment: Alignment.topLeft,
-                child: (controller.cart.value.isNotEmpty)?itogoWidget(context):SizedBox(),),
-            Container(height: 100, child: orderButton(context)),
-          ],
         ),
       ),
     );
@@ -142,16 +150,14 @@ class CartView extends GetView<CartController> {
   }
 
   Widget orderList(BuildContext context) {
-    return Obx(
-      () => Column(
-        children: [
-          ...controller.cart
-              .map((cart_item) => Column(
-                    children: [cartItemWidget(context, cart_item), Divider()],
-                  ))
-              .toList()
-        ],
-      ),
+    return Column(
+      children: [
+        ...controller.cart
+            .map((cart_item) => Column(
+                  children: [cartItemWidget(context, cart_item), Divider()],
+                ))
+            .toList()
+      ],
     );
   }
 
@@ -287,12 +293,13 @@ class CartView extends GetView<CartController> {
         alignment: Alignment.center,
         margin: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         decoration: BoxDecoration(
-            color: (controller.cart.isNotEmpty)?hexToColor('#427a5b'):Colors.grey.shade300, borderRadius: BorderRadius.all(Radius.circular(15))),
+            color: (controller.cart.isNotEmpty) ? hexToColor('#427a5b') : Colors.grey.shade300,
+            borderRadius: BorderRadius.all(Radius.circular(15))),
         child: Text(
           'Оформить заказ',
           style: TextStyle(
               fontFamily: 'Manrope',
-              color: (controller.cart.isNotEmpty)?Colors.white:Colors.grey,
+              color: (controller.cart.isNotEmpty) ? Colors.white : Colors.grey,
               fontWeight: FontWeight.w600,
               fontSize: 18),
         ),
