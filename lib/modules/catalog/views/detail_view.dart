@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:test_task/db/response/categories_response.dart';
+import 'package:test_task/db/response/products_response.dart';
 import 'package:test_task/modules/catalog/controllers/catalog_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../../utils/hex_color.dart';
@@ -97,8 +99,8 @@ class DetailView extends GetView<DetailController> {
                     crossAxisCount: 1,
                     childAspectRatio: 1,
                     children: <Widget>[
-                      ...controller.product_item['image']
-                          .map((img_item) => mini_img(context, img_item))
+                      ...?controller.product_item.image
+                          ?.map((img_item) => mini_img(context, img_item))
                           .toList()
                     ],
                   ),
@@ -158,7 +160,7 @@ class DetailView extends GetView<DetailController> {
     return Container(
       child: ListTile(
         title: Text(
-          '${controller.product_item['name']}',
+          '${controller.product_item.name}',
           style: TextStyle(
               fontFamily: 'Manrope',
               color: hexToColor('#343235'),
@@ -177,7 +179,7 @@ class DetailView extends GetView<DetailController> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            '${GetStorage().read('categories').where((categ) => categ['id'] == controller.product_item['category_id']).toList()[0]['image']}'),
+                            '${GetStorage().read('categories').where(( categ) => categ['id'] == controller.product_item.category_id).toList()[0]['image']}'),
                         fit: BoxFit.cover),
                   ),
                 ),
@@ -189,7 +191,8 @@ class DetailView extends GetView<DetailController> {
                 flex: 10,
                 child: Container(
                   child: Text(
-                    '${GetStorage().read('categories').where((categ) => categ['id'] == controller.product_item['category_id']).toList()[0]['category_name']}',
+                    // '',
+                    '${GetStorage().read('categories').where(( categ) => categ['id'] == controller.product_item.category_id).toList()[0]['category_name']}',
                     style: TextStyle(
                         fontFamily: 'Manrope',
                         color: hexToColor('#343235'),
@@ -231,8 +234,8 @@ class DetailView extends GetView<DetailController> {
                   crossAxisCount: 1,
                   childAspectRatio: 0.8,
                   children: <Widget>[
-                    ...controller.product.value['packaging']
-                        .map((pack) => pack_item(context, pack))
+                    ...?controller.product.value?.packaging
+                        ?.map((Packaging pack) => pack_item(context, pack))
                         .toList()
                   ],
                 ),
@@ -244,24 +247,24 @@ class DetailView extends GetView<DetailController> {
     );
   }
 
-  Widget pack_item(BuildContext context, item) {
+  Widget pack_item(BuildContext context, Packaging item) {
     return InkWell(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: (item['selected'] == 0) ? hexToColor('#FDFEFD') : Colors.black,
-          border: Border.all(color: (item['selected'] == 0) ? Colors.black : Colors.grey, width: 1),
+          color: (item.selected == 0) ? hexToColor('#FDFEFD') : Colors.black,
+          border: Border.all(color: (item.selected == 0) ? Colors.black : Colors.grey, width: 1),
           borderRadius: BorderRadius.all(
             Radius.circular(5),
           ),
         ),
         child: Text(
-          '${item['size']}',
+          '${item.size}',
           textAlign: TextAlign.center,
           style: TextStyle(
               fontFamily: 'Manrope',
-              color: (item['selected'] == 1) ? Colors.white : hexToColor('#343235'),
+              color: (item.selected == 1) ? Colors.white : hexToColor('#343235'),
               fontWeight: FontWeight.w300,
               fontSize: 18),
         ),
@@ -317,7 +320,7 @@ class DetailView extends GetView<DetailController> {
                     height: 100,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Text(
-                      '${controller.product_item['description']}',
+                      '${controller.product_item.description}',
                       style: TextStyle(
                           fontFamily: 'Manrope',
                           color: hexToColor('#343235'),
@@ -329,7 +332,7 @@ class DetailView extends GetView<DetailController> {
                     height: 100,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Text(
-                      '${controller.product_item['composition']}',
+                      '${controller.product_item.composition}',
                       style: TextStyle(
                           fontFamily: 'Manrope',
                           color: hexToColor('#343235'),
@@ -359,7 +362,7 @@ class DetailView extends GetView<DetailController> {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '₽${controller.product.value['packaging'].where((item) => item['selected'] == 1).toList()[0]['price']}',
+                  '₽${controller.product.value?.packaging?.where((item) => item.selected == 1).toList()[0].price}',
                   style: TextStyle(
                       fontFamily: 'Manrope',
                       color: hexToColor('#343235'),
@@ -371,7 +374,7 @@ class DetailView extends GetView<DetailController> {
             Flexible(
               flex: 10,
               child: (controller.cart
-                      .where((item) => item['product_id'] == controller.product['id'])
+                      .where((item) => item['product_id'] == controller.product.value?.id)
                       .isNotEmpty)
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -397,7 +400,7 @@ class DetailView extends GetView<DetailController> {
                           child: Container(
                             alignment: Alignment.center,
                             child: Text(
-                              '${controller.cart.where((item) => item['product_id'] == controller.product['id']).toList()[0]['count']}',
+                              '${controller.cart.where((item) => item['product_id'] == controller.product.value?.id).toList()[0]['count']}',
                               style: TextStyle(
                                   fontFamily: 'Manrope',
                                   color: hexToColor('#343235'),
@@ -412,7 +415,7 @@ class DetailView extends GetView<DetailController> {
                             alignment: Alignment.centerLeft,
                             child: IconButton(
                               onPressed: () {
-                                controller.addItem(context, controller.product);
+                                controller.addItem(context, controller.product.value);
                               },
                               icon: FaIcon(
                                 FontAwesomeIcons.circlePlus,
@@ -445,8 +448,8 @@ class DetailView extends GetView<DetailController> {
                       onTap: () {
                         controller.addToCartFirst(
                             context,
-                            controller.product.value['packaging']
-                                .where((item) => item['selected'] == 1)
+                            controller.product.value!.packaging
+                                !.where((item) => item.selected == 1)
                                 .toList()[0]);
                       },
                     ),
@@ -466,7 +469,7 @@ class DetailView extends GetView<DetailController> {
           margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           decoration: BoxDecoration(
               color: (controller.cart
-                      .where((item) => item['product_id'] == controller.product['id'])
+                      .where((item) => item['product_id'] == controller.product.value?.id)
                       .isNotEmpty)
                   ? hexToColor('#427a5b')
                   : Colors.grey.shade400,
